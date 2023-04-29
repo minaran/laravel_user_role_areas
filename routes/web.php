@@ -40,8 +40,15 @@ Route::middleware(['auth', 'verified'])->group(function() {
         ->name('timetable');
     
     // Route::get('').....tu bi stavili drugu rutu na primer za studenta2..... 
-
     });
+
+    Route::prefix('teacher')
+        ->name('teacher.')
+        ->group( function(){
+        Route::get('timetable', [\App\Http\Controllers\Teacher\TimetableController::class, 'index']) 
+        ->name('timetable');
+    });
+    
 });
 
 
