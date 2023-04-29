@@ -27,7 +27,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     //})->middleware(['auth', 'verified'])->name('dashboard');   // uklonili smo je...i obrisali blade, i korigovali kod navigation blade i u RouteServ.Provider kod H O M E 
     
     // ovim smo napravili i grupu ako kod studenat budemo imali vise tpova studenata
-    Route::prefix('student')
+    Route::middleware('role:1')
+    ->prefix('student')
     ->name('student.')
     ->group( function(){
 
@@ -42,7 +43,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     // Route::get('').....tu bi stavili drugu rutu na primer za studenta2..... 
     });
 
-    Route::prefix('teacher')
+    Route::middleware('role:2')
+        ->prefix('teacher')
         ->name('teacher.')
         ->group( function(){
         Route::get('timetable', [\App\Http\Controllers\Teacher\TimetableController::class, 'index']) 
