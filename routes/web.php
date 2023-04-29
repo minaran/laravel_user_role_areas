@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Student;  // ovako krace je bolje sa namespecovima
+use App\Http\Controllers\Teacher;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
         // Route::get('/student/timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])   // prvi red ostavljamo malo izmenjeno
         // ->middleware(['auth', 'verified']) // ni ovo nam netreba jer imamo gore grupisano red 23
         //->name('student.timetable');  // napisacemo jednostavnije drugacije:
-        Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index']) 
+        Route::get('timetable', [Student\TimetableController::class, 'index']) 
         ->name('timetable');
     
     // Route::get('').....tu bi stavili drugu rutu na primer za studenta2..... 
@@ -47,7 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
         ->prefix('teacher')
         ->name('teacher.')
         ->group( function(){
-        Route::get('timetable', [\App\Http\Controllers\Teacher\TimetableController::class, 'index']) 
+        Route::get('timetable', [Teacher\TimetableController::class, 'index']) 
         ->name('timetable');
     });
     
