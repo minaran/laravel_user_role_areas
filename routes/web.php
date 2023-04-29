@@ -22,9 +22,9 @@ Route::get('/', function () {
 // ako imamo vise korisnika grupisacemo ih da se ne ponavlja kod
 Route::middleware(['auth', 'verified'])->group(function() {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    //Route::get('/dashboard', function () {
+    //    return view('dashboard');
+    //})->middleware(['auth', 'verified'])->name('dashboard');   // uklonili smo je...i obrisali blade, i korigovali kod navigation blade i u RouteServ.Provider kod H O M E 
     
     // ovim smo napravili i grupu ako kod studenat budemo imali vise tpova studenata
     Route::prefix('student')
