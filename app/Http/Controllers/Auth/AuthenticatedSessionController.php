@@ -29,7 +29,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);  // kad se registrujemo automatcki ide na HOME...to cu promeniti
+        //return redirect()->intended(RouteServiceProvider::HOME);  // kad se registrujemo automatcki ide na HOME...to cu promeniti
+        // ali sad smo uveli i role pa ce bit:
+        return redirect()->route(auth()->user()->getRedirectRouteName());
+        
     }
 
     /**

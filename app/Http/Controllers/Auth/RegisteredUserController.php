@@ -48,6 +48,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);   // i ovde ce prebaciti na Timetable jer ne koristim Dashboard za home stranu
+        // return redirect(RouteServiceProvider::HOME);   // i ovde ce prebaciti na Timetable jer ne koristim Dashboard za home stranu
+
+        return redirect()->route(auth()->user()->getRedirectRouteName());
     }
 }
