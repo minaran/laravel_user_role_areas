@@ -48,6 +48,7 @@ class User extends Authenticatable
         return match ((int)$this->role_id){
             1 => 'student.timetable',
             2 => 'teacher.timetable',
+            3 => 'admin.users',
         };
     }
 }

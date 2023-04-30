@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Student;  // ovako krace je bolje sa namespecovima
 use App\Http\Controllers\Teacher;
+use App\Http\Controllers\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,14 @@ Route::middleware(['auth', 'verified'])->group(function() {
         ->name('timetable');
     });
     
+    Route::middleware('role:3')
+    ->prefix('admin')
+    ->name('admin.')
+    ->group( function(){
+    Route::get('users', [Admin\UsersController::class, 'index']) 
+    ->name('users');
+});
+
 });
 
 
